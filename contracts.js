@@ -183,6 +183,15 @@ const CHAIN_CONFIGS = {
         blockTime: 2,
         gasToken: 'MATIC',
     },
+    // BSC Mainnet
+    56: {
+        name: 'BSC Mainnet',
+        aliases: ['bsc', 'binance', 'bsc-mainnet'],
+        rpc: process.env.BSC_RPC_URL || 'https://bsc-dataseed.binance.org',
+        explorer: 'https://bscscan.com',
+        blockTime: 3,
+        gasToken: 'BNB',
+    },
     // Polygon Amoy Testnet
     80002: {
         name: 'Polygon Amoy',
@@ -214,6 +223,12 @@ const POLYGON_MAINNET = {
     NFTOffers: '0x0C9Bf667b838f6d466619ddb90a08d6c9A64d0A4',
     Marketplace: '0x1c061A896E0ac9C046A93eaf475c45ED5Bd8A1fE',
     AdminRegistry: '0xfCe2F7dcf1786d1606b9b858E9ba04dA499F1e3C',
+};
+
+// ── Hardcoded BSC Mainnet Addresses (already deployed) ──────────────────────
+const BSC_MAINNET = {
+    BEZCoin: '0xEcBa873B534C54DE2B62acDE232ADCa4369f11A8',
+    BezhasToken: '0xEcBa873B534C54DE2B62acDE232ADCa4369f11A8',
 };
 
 // ── Alias → chainId mapping ─────────────────────────────────────────────────
@@ -286,8 +301,13 @@ function _getAddressesForChain(chainId) {
     // Layer 1: Deployment files
     const deployed = _loadDeploymentFile(chainId);
 
-    // Layer 2: Hardcoded (Polygon mainnet)
-    const hardcoded = chainId === 137 ? POLYGON_MAINNET : {};
+    // Layer 2: Hardcoded (Polygon mainnet / BSC mainnet)
+    let hardcoded = {};
+    if (chainId === 137) {
+        hardcoded = POLYGON_MAINNET;
+    } else if (chainId === 56) {
+        hardcoded = BSC_MAINNET;
+    }
 
     // Layer 3: Env var overrides (BEZHAS_<CONTRACT>_<CHAINID>)
     const envOverrides = {};
