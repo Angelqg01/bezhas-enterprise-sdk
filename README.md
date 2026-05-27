@@ -5,9 +5,7 @@ SDK completo para integración con servicios empresariales de BeZhas Platform.
 ## 📦 Instalación
 
 ```bash
-npm install bezhas-enterprise-sdk
-# o
-yarn add bezhas-enterprise-sdk
+pnpm add @bezhas/sdk
 ```
 
 ## 🚀 Quick Start
