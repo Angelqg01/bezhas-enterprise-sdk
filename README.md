@@ -494,7 +494,7 @@ MIT
 ## 🤝 Soporte
 
 - Documentación: https://docs.bezhas.com
-- Email: support@bezhas.com
+- Email: info.bezcoin@bezhas.com
 - Discord: https://discord.gg/bezhas
 - GitHub: https://github.com/bezhas/bezhas-sdk
 
